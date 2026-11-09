@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PortfolioProject.Context;
+using PortfolioProject.Entities;
 
 namespace PortfolioProject.Areas.Admin.Controllers
 {
@@ -17,6 +18,20 @@ namespace PortfolioProject.Areas.Admin.Controllers
         {
             var values = _context.contacts.ToList();
             return View(values);
+        }
+
+        [HttpGet]
+        public IActionResult CreateContact()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult CreateContact(Contact contact)
+        {
+            _context.contacts.Add(contact);
+            _context.SaveChanges();
+            return RedirectToAction("ContactList");
         }
     }
 }
