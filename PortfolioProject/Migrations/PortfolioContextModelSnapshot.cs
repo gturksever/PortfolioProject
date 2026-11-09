@@ -162,6 +162,10 @@ namespace PortfolioProject.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Subject")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("MessageId");
 
                     b.ToTable("Messages");

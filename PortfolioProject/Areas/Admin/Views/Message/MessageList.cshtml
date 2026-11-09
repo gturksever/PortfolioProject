@@ -1,0 +1,33 @@
+﻿
+@model List<PortfolioProject.Entities.Message>
+
+@{
+    ViewData["Title"] = "MessageList";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="container">
+    <br />
+    <table class="table table-bordered">
+        <tr>
+            <th>#</th>
+            <th>Gönderen</th>
+            <th>konu</th>
+            <th>Tarih</th>
+            <th>Mesajı aç</th>
+        </tr>
+
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@item.MessageId</td>
+                <td>@item.SenderName</td>
+                <td>@item.Subject</td>
+                <td>@item.SendDate.ToString("dd MMM yyyy")</td>
+                <td><a href="/Admin/Message/MessageDetail/@item.MessageId" class="btn btn-info">Mesajı aç</a></td>
+            </tr>
+        }
+    </table>
+
+</div>
+
